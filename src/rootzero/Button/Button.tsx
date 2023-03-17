@@ -3,11 +3,21 @@ import styled, { css } from "styled-components";
 
 interface Props {
   theme?: "primary" | "secondary" | "ghost" | "outlined";
+  size?: "default" | "small" | "medium" | "large";
+  onClick?: () => void;
   children: ReactNode;
 }
 
-const Button = ({ theme, children }: Props) => {
-  return <Container theme={theme || "primary"}>{children}</Container>;
+const Button = ({ theme, children, size, onClick }: Props) => {
+  return (
+    <Container
+      theme={theme || "primary"}
+      size={size || "default"}
+      onClick={onClick}
+    >
+      {children}
+    </Container>
+  );
 };
 
 /** 기본 스타일 */
@@ -38,6 +48,24 @@ const Container = styled(DefaultStyle)`
           background-color: transparent;
           color: black;
           border: 1px solid black;
+        `;
+      default:
+        return css``;
+    }
+  }};
+  ${(props: Props) => {
+    switch (props.size) {
+      case "small":
+        return css`
+          font-size: 10px;
+        `;
+      case "medium":
+        return css`
+          font-size: 15px;
+        `;
+      case "large":
+        return css`
+          font-size: 30px;
         `;
       default:
         return css``;

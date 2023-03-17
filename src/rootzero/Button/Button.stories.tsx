@@ -21,3 +21,14 @@ export const Theme: ComponentStory<typeof Button> = () => {
     </div>
   );
 };
+
+export const Size: ComponentStory<typeof Button> = () => {
+  return (
+    <div>
+      <Button size="small">Small</Button>
+      <Button size="medium">Medium</Button>
+      <Button size="large">Large</Button>
+      <Button>Default</Button>
+    </div>
+  );
+};
